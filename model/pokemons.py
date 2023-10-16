@@ -1,8 +1,9 @@
 import random
 
-#List of pokemon 0001-0100 format might be wrong vscode keeps saying there is a bug
 
-poke_list = [
+#List of pokemon 0001-0100 format might be wrong vscode keeps saying there is a bug
+pokemon_data = []
+pokemon_list = [
     {
         "name": "Bulbasaur",
         "hp": 9,
@@ -492,7 +493,7 @@ poke_list = [
         "abilities": "Shield Dust",
         "type": "Bug/Poison",
         "weakness": ["Fire", "Flying", "Psychic", "Rock"]
-    }
+    },
     {
         "name": "Diglett",
         "hp": 7,
@@ -1002,5 +1003,40 @@ poke_list = [
         "abilities": "Soundproof",
         "type": "Electric",
         "weakness": ["Ground"]
-    },
+    }
 ]
+
+def initPokemons():
+    
+    #moving pokemon from list to data
+    item_id=0
+    for item in pokemon_list:
+        pokemon_data.appendA({"id": item_id, "pokemon": item, "upvote": 0, "downvote": 0})
+        item_id += 1
+    #adding default upvotes (10)
+    for i in range(10):
+        id = getRandomPokemon()['id']
+        addUpVote(id)
+    #adding default downvotes (5)
+    for i in range(5):
+        id = getRandomPokemon()['id']
+        addDownVote(id)
+
+#returns all pokemon
+def getPokemons():
+    return(pokemon_data)
+
+#gets a specific pokemon
+def getPokemon(id):
+    return(pokemon_data[id])
+
+#gets a random pokemon
+def getRandomPokemon():
+    return(random.choice(pokemon_data))
+
+#Upvote Pokemon
+#def favoritePokemon():
+#    best = 0 
+#    bestID = -1
+#    for pokemon in getPokemons():
+#        if pokemon

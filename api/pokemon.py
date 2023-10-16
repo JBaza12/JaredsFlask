@@ -3,15 +3,14 @@ from flask_restful import Api, Resource # used for REST API building
 import requests  # used for testing 
 import random
 
-from model.jokes import *
+from model.pokemons import *
 
-joke_api = Blueprint('joke_api', __name__,
-                   url_prefix='/api/jokes')
+pokemon_api = Blueprint('pokemon_api', __name__,
+                   url_prefix='/api/pokemons')
 
-# API generator https://flask-restful.readthedocs.io/en/latest/api.html#id1
-api = Api(joke_api)
+api = Api(pokemon_api)
 
-class JokesAPI:
+class PokemonsAPI:
     # not implemented
     class _Create(Resource):
         def post(self, joke):
@@ -20,39 +19,39 @@ class JokesAPI:
     # getJokes()
     class _Read(Resource):
         def get(self):
-            return jsonify(getJokes())
+            return jsonify(getPokemons())
 
     # getJoke(id)
     class _ReadID(Resource):
         def get(self, id):
-            return jsonify(getJoke(id))
+            return jsonify(getPokemons(id))
 
     # getRandomJoke()
     class _ReadRandom(Resource):
         def get(self):
-            return jsonify(getRandomJoke())
+            return jsonify(getRandomPokemon())
     
     # getRandomJoke()
     class _ReadCount(Resource):
         def get(self):
-            count = countJokes()
+            count = countPokemons()
             countMsg = {'count': count}
             return jsonify(countMsg)
 
     # put method: addJokehaha
     class _UpdateLike(Resource):
         def put(self, id):
-            addJokehaha(id)
-            return jsonify(getJoke(id))
+            addPokemonhaha(id)
+            return jsonify(getPokemon(id))
 
     # put method: addJokeboohoo
     class _UpdateJeer(Resource):
         def put(self, id):
-            addJokeboohoo(id)
-            return jsonify(getJoke(id))
+            addPokemonboohoo(id)
+            return jsonify(getPokemon(id))
 
     # building RESTapi resources/interfaces, these routes are added to Web Server
-    api.add_resource(_Create, '/create/<string:joke>')
+    api.add_resource(_Create, '/create/<string:pokemon>')
     api.add_resource(_Read, '/')
     api.add_resource(_ReadID, '/<int:id>')
     api.add_resource(_ReadRandom, '/random')
@@ -60,10 +59,12 @@ class JokesAPI:
     api.add_resource(_UpdateLike, '/like/<int:id>')
     api.add_resource(_UpdateJeer, '/jeer/<int:id>')
     
+    
+    
 if __name__ == "__main__": 
     # server = "http://127.0.0.1:5000" # run local
     server = 'https://flask.nighthawkcodingsociety.com' # run from web
-    url = server + "/api/jokes"
+    url = server + "/api/pokemons"
     responses = []  # responses list
 
     # get count of jokes on server

@@ -8,7 +8,7 @@ from __init__ import app,db  # Definitions initialization
 from model.jokes import initJokes
 from model.users import initUsers
 from model.players import initPlayers
-from model.pokemon_list import initPokemon
+from model.pokemons import initPokemon
 
 
 # setup APIs

@@ -39,16 +39,16 @@ class JokesAPI:
             countMsg = {'count': count}
             return jsonify(countMsg)
 
-    # put method: addJokeHaHa
+    # put method: addJokeif_useful
     class _UpdateLike(Resource):
         def put(self, id):
-            addJokeHaHa(id)
+            addJokeif_useful(id)
             return jsonify(getJoke(id))
 
-    # put method: addJokeBooHoo
+    # put method: addJokeif_not_useful
     class _UpdateJeer(Resource):
         def put(self, id):
-            addJokeBooHoo(id)
+            addJokeif_not_useful(id)
             return jsonify(getJoke(id))
 
     # building RESTapi resources/interfaces, these routes are added to Web Server

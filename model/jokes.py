@@ -4,7 +4,7 @@ jokes_data = []
 joke_list = [
     "If you give someone a program... you will frustrate them for a day; if you teach them how to program... you will "
     "frustrate them for a lifetime.",
-    "Q: Why did I divide sin by tan? A: Just cos.",
+    {"name": "Pikachu", "hp": 35, "level": 15, "type": "Electric"},
     "UNIX is basically a simple operating system... but you have to be a genius to understand the simplicity.",
     "Enter any 11-digit prime number to continue.",
     "If at first you don't succeed; call it version 1.0.",
@@ -26,19 +26,19 @@ joke_list = [
 
 # Initialize jokes
 def initJokes():
-    # setup jokes into a dictionary with id, joke, haha, boohoo
+    # setup jokes into a dictionary with id, joke, if_useful, if_not_useful
     item_id = 0
     for item in joke_list:
-        jokes_data.append({"id": item_id, "joke": item, "haha": 0, "boohoo": 0})
+        jokes_data.append({"id": item_id, "joke": item, "if_useful": 0, "if_not_useful": 0})
         item_id += 1
-    # prime some haha responses
+    # prime some if_useful responses
     for i in range(10):
         id = getRandomJoke()['id']
-        addJokeHaHa(id)
-    # prime some haha responses
+        addJokeif_useful(id)
+    # prime some if_useful responses
     for i in range(5):
         id = getRandomJoke()['id']
-        addJokeBooHoo(id)
+        addJokeif_not_useful(id)
         
 # Return all jokes from jokes_data
 def getJokes():
@@ -57,8 +57,8 @@ def favoriteJoke():
     best = 0
     bestID = -1
     for joke in getJokes():
-        if joke['haha'] > best:
-            best = joke['haha']
+        if joke['if_useful'] > best:
+            best = joke['if_useful']
             bestID = joke['id']
     return jokes_data[bestID]
     
@@ -67,24 +67,24 @@ def jeeredJoke():
     worst = 0
     worstID = -1
     for joke in getJokes():
-        if joke['boohoo'] > worst:
-            worst = joke['boohoo']
+        if joke['if_not_useful'] > worst:
+            worst = joke['if_not_useful']
             worstID = joke['id']
     return jokes_data[worstID]
 
-# Add to haha for requested id
-def addJokeHaHa(id):
-    jokes_data[id]['haha'] = jokes_data[id]['haha'] + 1
-    return jokes_data[id]['haha']
+# Add to if_useful for requested id
+def addJokeif_useful(id):
+    jokes_data[id]['if_useful'] = jokes_data[id]['if_useful'] + 1
+    return jokes_data[id]['if_useful']
 
-# Add to boohoo for requested id
-def addJokeBooHoo(id):
-    jokes_data[id]['boohoo'] = jokes_data[id]['boohoo'] + 1
-    return jokes_data[id]['boohoo']
+# Add to if_not_useful for requested id
+def addJokeif_not_useful(id):
+    jokes_data[id]['if_not_useful'] = jokes_data[id]['if_not_useful'] + 1
+    return jokes_data[id]['if_not_useful']
 
 # Pretty Print joke
 def printJoke(joke):
-    print(joke['id'], joke['joke'], "\n", "haha:", joke['haha'], "\n", "boohoo:", joke['boohoo'], "\n")
+    print(joke['id'], joke['joke'], "\n", "if_useful:", joke['if_useful'], "\n", "if_not_useful:", joke['if_not_useful'], "\n")
 
 # Number of jokes
 def countJokes():
@@ -96,10 +96,10 @@ if __name__ == "__main__":
     
     # Most likes and most jeered
     best = favoriteJoke()
-    print("Most liked", best['haha'])
+    print("Most liked", best['if_useful'])
     printJoke(best)
     worst = jeeredJoke()
-    print("Most jeered", worst['boohoo'])
+    print("Most jeered", worst['if_not_useful'])
     printJoke(worst)
     
     # Random joke

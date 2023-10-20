@@ -6,99 +6,60 @@
 
 <!- This is a replacement block for Body in base.html -->
 {% block body %}
-    <!- Try building a new body here, bootstrap is a wise choice ->
+    <!-- Try building a new body here, using Bootstrap for styling -->
     <div class="px-5 py-5 mx-auto">
-        <table id="md_demo" class="table">
+        <table id="pokemon_table" class="table">
             <thead>
                 <tr>
-                    <th>Player</th>
-                    <th>Current Club</th>
-                    <th>Country</th>
-                    <th>Position</th>
-                    <th>Ranking</th>
+                    <th>Pokémon</th>
+                    <th>Type</th>
+                    <th>Abilities</th>
+                    <th>Image</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Lionel Messi</td>
-                    <td>FC Barcelona, Inter Miami</td>
-                    <td>Argentina</td>
-                    <td>RW</td>
-                    <td>1</td>
+                    <td>Pikachu</td>
+                    <td>Electric</td>
+                    <td>Static, Lightning Rod</td>
+                    <td><a href="pikachu_image_link"><img src="pikachu.jpg" alt="Pikachu Image" width="100"></a></td>
                 </tr>
                 <tr>
-                    <td>Pele</td>
-                    <td>Retired</td>
-                    <td>Brazil</td>
-                    <td>ST</td>
-                    <td>2</td>
+                    <td>Charizard</td>
+                    <td>Fire/Flying</td>
+                    <td>Blaze, Solar Power</td>
+                    <td><a href="charizard_image_link"><img src="charizard.jpg" alt="Charizard Image" width="100"></a></td>
+                </tr>
+                <!-- Add more Pokémon here with their types, abilities, and images -->
+                <tr>
+                    <td>Bulbasaur</td>
+                    <td>Grass/Poison</td>
+                    <td>Overgrow, Chlorophyll</td>
+                    <td><a href="bulbasaur_image_link"><img src="bulbasaur.jpg" alt="Bulbasaur Image" width="100"></a></td>
                 </tr>
                 <tr>
-                    <td>Maradona</td>
-                    <td>Retired</td>
-                    <td>Argentina</td>
-                    <td>CAM</td>
-                    <td>3</td>
+                    <td>Squirtle</td>
+                    <td>Water</td>
+                    <td>Torrent, Rain Dish</td>
+                    <td><a href="squirtle_image_link"><img src="squirtle.jpg" alt="Squirtle Image" width="100"></a></td>
                 </tr>
-                <tr>
-                    <td>Ronaldo</td>
-                    <td>Al Nasir</td>
-                    <td>Portugal</td>
-                    <td>ST</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>Ronaldhino</td>
-                    <td>Retired, FC Barcelona</td>
-                    <td>Brazil</td>
-                    <td>LW</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>Johan Cruyff</td>
-                    <td>Retired, FC Barcelona</td>
-                    <td>Netheranlds</td>
-                    <td>CAM</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>Zidane</td>
-                    <td>Retired, Real Madrid</td>
-                    <td>France</td>
-                    <td>CAM</td>
-                    <td>7</td>
-                </tr>
-                <tr>
-                    <td>Ronaldo Nazario</td>
-                    <td>Retired, Inter</td>
-                    <td>Brazil</td>
-                    <td>ST</td>
-                    <td>8</td>
-                </tr>
-                <tr>
-                    <td>Platini</td>
-                    <td>Retired, AC Milan</td>
-                    <td>Italy</td>
-                    <td>CB</td>
-                    <td>9</td>
-                </tr>
-                <tr>
-                    <td>Neymar</td>
-                    <td>Al Hilal, PSG, FC Barcelona</td>
-                    <td>Brazil</td>
-                    <td>LW</td>
-                    <td>10</td>
-                </tr>
+                <!-- Add more Pokémon here -->
             </tbody>
         </table>
-    </body>
-    
-    <!-- Script is used to embed executable code -->
-    <script>
-        $("#md_demo").DataTable();
-    </script>
-</div>
+    </div>
+</body>
+
+<!-- Include the DataTables library for table functionality -->
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+<!-- Activate DataTable for the table -->
+<script>
+    $(document).ready(function() {
+        $("#pokemon_table").DataTable();
+    });
+</script>
 {% endblock %}
+
 
 <!- This is turning off birds background from base.html -->
 {% block background %}

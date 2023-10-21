@@ -4,9 +4,57 @@ import random
 #List of pokemon 0001-0100 format might be wrong vscode keeps saying there is a bug
 pokemon_data = []
 pokemon_list = [
-    "If you give someone a program... you will frustrate them for a day; if you teach them how to program... you will "
-    "frustrate them for a lifetime.",
-    {"name": "Pikachu", "hp": 35, "level": 15, "type": "Electric"}
+    {
+        "name": "Bulbasaur",
+        "hp": 9,
+        "attack": 7,
+        "height": "28",
+        "weight_in_lbs": "15.2",
+        "abilities": "Overgrow",
+        "type": "Grass/Poison",
+        "weakness": ["Fire", "Psychic", "Ice", "Flying"]
+    },
+    {
+        "name": "Ivysaur",
+        "hp": 13,
+        "attack": 8,
+        "height": "39",
+        "weight_in_lbs": "28.7",
+        "abilities": "Overgrow",
+        "type": "Grass/Poison",
+        "weakness": ["Fire", "Psychic", "Ice", "Flying"]
+    },
+    {
+        "name": "Venusaur",
+        "hp": 14,
+        "attack": 9,
+        "height": "79",
+        "weight_in_lbs": "220.5",
+        "abilities": "Overgrow",
+        "type": "Grass/Poison",
+        "weakness": ["Fire", "Psychic", "Ice", "Flying"]
+    },
+    {
+        "name": "Charmander",
+        "hp": 7,
+        "attack": 8,
+        "height": "24",
+        "weight_in_lbs": "18.7",
+        "abilities": "Blaze",
+        "type": "Fire",
+        "weakness": ["Water", "Rock", "Ground"]
+    },
+    {
+        "name": "Charmeleon",
+        "hp": 10,
+        "attack": 9,
+        "height": "43",
+        "weight_in_lbs": "41.9",
+        "abilities": "Blaze",
+        "type": "Fire",
+        "weakness": ["Water", "Rock", "Ground"]
+    }
+
 ]
 
 def initPokemons():
@@ -14,7 +62,7 @@ def initPokemons():
     #moving pokemon from list to data
     item_id=0
     for item in pokemon_list:
-        pokemon_data.appendA({"id": item_id, "pokemon": item, "upvote": 0, "downvote": 0})
+        pokemon_data.append({"id": item_id, "pokemon": item, "upvote": 0, "downvote": 0})
         item_id += 1
     #adding default upvotes (10)
     for i in range(10):
@@ -52,7 +100,7 @@ def worstPokemon():
     worst = 0 
     worstID = -1
     for pokemon in getPokemons():
-        if pokemon['downvote'] > best:
+        if pokemon['downvote'] > worst:
             worst = pokemon['downvote']
             worstID = pokemon['id']
     return pokemon_data[worstID]

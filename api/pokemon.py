@@ -10,12 +10,13 @@ pokemon_api =  Blueprint('pokemon_api', __name__,
 
 api = Api(pokemon_api)
 
+#Defining Pokemon Class
 class PokemonsAPI:
     
     class _Create(Resource):
         def post(self, pokemon):
             pass
-        
+# Defining functinos to Read the pokemon information
     class _Read(Resource):
         def get(self):
             return jsonify(getPokemons())
@@ -34,11 +35,12 @@ class PokemonsAPI:
             countMsg = {'count': count}
             return jsonify(countMsg)
     
+# Updating Upvotes
     class _UpdateUpVote(Resource):
         def put(self, id):
             addUpVote(id)
             return jsonify(getPokemon(id))
-    
+#Updating Downvotes
     class _UpdateDownVote(Resource):
         def put(self, id):
             addDownVote(id)
@@ -64,7 +66,7 @@ if __name__ == "__main__":
     
     num = str(random.randint(0, count-1)) # test a random record
     responses.append(
-        requests.get(url+"/"+num)  # read joke by id
+        requests.get(url+"/"+num)  # read pokemon by id
         ) 
     responses.append(
         requests.put(url+"/upvote/"+num) # add to upvote count
@@ -74,7 +76,7 @@ if __name__ == "__main__":
         ) 
     
     responses.append(
-        requests.get(url+"/random")  # read a random joke
+        requests.get(url+"/random")  # read a random pokemon
         ) 
     
     for response in responses:

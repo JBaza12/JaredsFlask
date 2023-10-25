@@ -1,8 +1,10 @@
 import random
+import base64
 
 
 #List of pokemon 0001-0100 format might be wrong vscode keeps saying there is a bug
 pokemon_data = []
+#List of Pokemon and their information that will eventually be transferred into the pokemon data list with name
 pokemon_list = [
     {
         "name": "Bulbasaur",
@@ -59,33 +61,33 @@ pokemon_list = [
 
 def initPokemons():
     
-    #moving pokemon from list to data
+    #moving pokemon from list to data list with new tags like id, pokemom, up/down vote
     item_id=0
     for item in pokemon_list:
         pokemon_data.append({"id": item_id, "pokemon": item, "upvote": 0, "downvote": 0})
         item_id += 1
-    #adding default upvotes (10)
+    #adding default upvotes (10) happens for random pokemon
     for i in range(10):
         id = getRandomPokemon()['id']
         addUpVote(id)
-    #adding default downvotes (5)
+    #adding default downvotes (5) for random pokemon
     for i in range(5):
         id = getRandomPokemon()['id']
         addDownVote(id)
 
-#returns all pokemon
+#returns all pokemon and their information
 def getPokemons():
     return(pokemon_data)
 
-#gets a specific pokemon
+#gets a specific pokemon and returns specific informaiton
 def getPokemon(id):
     return(pokemon_data[id])
 
-#gets a random pokemon
+#gets a random pokemon and returns information
 def getRandomPokemon():
     return(random.choice(pokemon_data))
 
-#Upvote Pokemon
+#Upvote Pokemon function
 def bestPokemon():
     best = 0 
     bestID = -1
@@ -95,7 +97,7 @@ def bestPokemon():
             bestID = pokemon['id']
     return pokemon_data[bestID]
 
-#Downvote Pokemon
+#Downvote Pokemon function
 def worstPokemon():
     worst = 0 
     worstID = -1
@@ -105,22 +107,22 @@ def worstPokemon():
             worstID = pokemon['id']
     return pokemon_data[worstID]
 
-#Add Upvote
+#Add Upvote, make it take affect 
 def addUpVote(id):
     pokemon_data[id]['upvote'] = pokemon_data[id]['upvote'] +1
     return pokemon_data[id]['upvote']
 
-#Add Downvote
+#Add Downvote, make it take affect
 def addDownVote(id):
     pokemon_data[id]['downvote'] = pokemon_data[id]['downvote'] +1
     return pokemon_data[id]['downvote']
-
+#printing out the pokemon
 def printPokemon(pokemon):
     print(pokemon['id'],pokemon['pokemon'],"\n", "upvotes: ", pokemon['upvote'], "\n", "downvote: ", pokemon['downvote'], "\n")
-
+#function made to count the number of pokemon
 def countPokemons():
     return len(pokemon_data)
-
+# running all the functions and conducting tests of the different functions above and making they run as supposed too.
 if __name__ == "__main__": 
     initPokemons()
     

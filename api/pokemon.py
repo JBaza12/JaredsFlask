@@ -2,12 +2,13 @@ from flask import Blueprint, jsonify  # jsonify creates an endpoint response obj
 from flask_restful import Api, Resource # used for REST API building
 import requests  # used for testing 
 import random
-
+#importing our own self-made API
 from model.pokemons import *
 
 pokemon_api =  Blueprint('pokemon_api', __name__,
                    url_prefix='/api/pokemons')
 
+#Defining our api as the pokemon API
 api = Api(pokemon_api)
 
 #Defining Pokemon Class
@@ -16,7 +17,7 @@ class PokemonsAPI:
     class _Create(Resource):
         def post(self, pokemon):
             pass
-# Defining functinos to Read the pokemon information
+# Defining functinos to Read the pokemon information, reads information for all the classes and definations
     class _Read(Resource):
         def get(self):
             return jsonify(getPokemons())
@@ -35,17 +36,18 @@ class PokemonsAPI:
             countMsg = {'count': count}
             return jsonify(countMsg)
     
-# Updating Upvotes
+# Updating Upvotes on the side and making take effect
     class _UpdateUpVote(Resource):
         def put(self, id):
             addUpVote(id)
             return jsonify(getPokemon(id))
-#Updating Downvotes
+#Updating Downvotes on the site and making it actually take effect
     class _UpdateDownVote(Resource):
         def put(self, id):
             addDownVote(id)
             return jsonify(getPokemon(id))  
         
+# Defining URLS for all of the api subpages
     api.add_resource(_Create, '/create/<string:pokemon>')
     api.add_resource(_Read, '/')
     api.add_resource(_ReadID, '/<int:id>')
@@ -54,12 +56,14 @@ class PokemonsAPI:
     api.add_resource(_UpdateUpVote, '/upvote/<int:id>')
     api.add_resource(_UpdateDownVote, '/downvote/<int:id>') 
     
+# Server URL stuff to create actual pathway to site
 if __name__ == "__main__": 
     
     server = 'https://flask.nighthawkcodingsociety.com' # run from web
     url = server + "/api/pokemons"
     responses = [] 
     
+    #adding code to make sure the upvotes, downvotes and get information run and work properly
     count_response = requests.get(url+"/count")
     count_json = count_response.json()
     count = count_json['count']

@@ -1,6 +1,31 @@
 import random
 import base64
+import base64
 
+# Specify the path to your image file
+#image_file_path = "/home/ronit/vscode/CSP_BLOG_RT/images/charmander.jpg"
+
+# Function to convert an image to base64
+def image_to_base64(image_path):
+    try:
+        with open(image_path, 'rb') as image_file:
+            # Read the binary data of the image
+            image_binary = image_file.read()
+            
+            # Encode the binary data as base64
+            base64_data = base64.b64encode(image_binary).decode('utf-8')
+            
+            return base64_data
+    except FileNotFoundError:
+        print(f"File '{image_path}' not found.")
+        return None
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+        return None
+
+# Call the function to get the base64 representation of the image
+#base64_image = image_to_base64(image_file_path)
+charmander_image=image_to_base64("/home/ronit/vscode/ProjectBackend/images/charmander.jpg")
 
 #List of pokemon 0001-0100 format might be wrong vscode keeps saying there is a bug
 pokemon_data = []
@@ -14,7 +39,8 @@ pokemon_list = [
         "weight_in_lbs": "15.2",
         "abilities": "Overgrow",
         "type": "Grass/Poison",
-        "weakness": ["Fire", "Psychic", "Ice", "Flying"]
+        "weakness": ["Fire", "Psychic", "Ice", "Flying"],
+        "image": charmander_image
     },
     {
         "name": "Ivysaur",

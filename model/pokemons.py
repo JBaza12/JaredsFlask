@@ -25,7 +25,7 @@ def image_to_base64(image_path):
 
 # Call the function to get the base64 representation of the image
 #base64_image = image_to_base64(image_file_path)
-charmander_image=image_to_base64("/home/ronit/vscode/ProjectBackend/images/charmander.jpg")
+charmander_image=image_to_base64("./images/charmander.jpg")
 
 #List of pokemon 0001-0100 format might be wrong vscode keeps saying there is a bug
 pokemon_data = []

@@ -31,58 +31,26 @@ charmander_image=image_to_base64("./images/charmander.jpg")
 pokemon_data = []
 #List of Pokemon and their information that will eventually be transferred into the pokemon data list with name
 pokemon_list = [
-    {
-        "name": "Bulbasaur",
-        "hp": 9,
-        "attack": 7,
-        "height": "28",
-        "weight_in_lbs": "15.2",
-        "abilities": "Overgrow",
-        "type": "Grass/Poison",
-        "weakness": ["Fire", "Psychic", "Ice", "Flying"],
-        "image": charmander_image
-    },
-    {
-        "name": "Ivysaur",
-        "hp": 13,
-        "attack": 8,
-        "height": "39",
-        "weight_in_lbs": "28.7",
-        "abilities": "Overgrow",
-        "type": "Grass/Poison",
-        "weakness": ["Fire", "Psychic", "Ice", "Flying"]
-    },
-    {
-        "name": "Venusaur",
-        "hp": 14,
-        "attack": 9,
-        "height": "79",
-        "weight_in_lbs": "220.5",
-        "abilities": "Overgrow",
-        "type": "Grass/Poison",
-        "weakness": ["Fire", "Psychic", "Ice", "Flying"]
-    },
-    {
-        "name": "Charmander",
-        "hp": 7,
-        "attack": 8,
-        "height": "24",
-        "weight_in_lbs": "18.7",
-        "abilities": "Blaze",
-        "type": "Fire",
-        "weakness": ["Water", "Rock", "Ground"]
-    },
-    {
-        "name": "Charmeleon",
-        "hp": 10,
-        "attack": 9,
-        "height": "43",
-        "weight_in_lbs": "41.9",
-        "abilities": "Blaze",
-        "type": "Fire",
-        "weakness": ["Water", "Rock", "Ground"]
-    }
-
+    "Charmander",
+    "Pikachu",
+    "Bulbasaur",
+    "Squirtle",
+    "Jigglypuff",
+    "Mewtwo",
+    "Gengar",
+    "Eevee",
+    "Snorlax",
+    "Dragonite",
+    "Machop",
+    "Magikarp",
+    "Gyarados",
+    "Vulpix",
+    "Eevee",
+    "Meowth",
+    "Abra",
+    "Geodude",
+    "Pidgey",
+    "Zubat"
 ]
 
 def initPokemons():

@@ -26,6 +26,7 @@ def image_to_base64(image_path):
 # Call the function to get the base64 representation of the image
 #base64_image = image_to_base64(image_file_path)
 charmander_image=image_to_base64("./images/charmander.jpg")
+pikachu_image=image_to_base64("./images/pikachu.jpg")
 
 #List of pokemon 0001-0100 format might be wrong vscode keeps saying there is a bug
 pokemon_data = []
@@ -53,12 +54,18 @@ pokemon_list = [
     "Zubat"
 ]
 
+image_dict = {
+    "Charmander": charmander_image,
+    "Pikachu": pikachu_image,
+    # Add more mappings for other Pokémon
+}
+
 def initPokemons():
     
     #moving pokemon from list to data list with new tags like id, pokemom, up/down vote
     item_id=0
     for item in pokemon_list:
-        pokemon_data.append({"id": item_id, "pokemon": item, "upvote": 0, "downvote": 0})
+        pokemon_data.append({"id": item_id, "pokemon": item, "upvote": 0, "downvote": 0, "image": image_dict.get(item, None)})
         item_id += 1
     #adding default upvotes (10) happens for random pokemon
     for i in range(10):

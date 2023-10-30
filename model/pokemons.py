@@ -74,11 +74,11 @@ def initPokemons():
         pokemon_data.append({"id": item_id, "pokemon": item, "info": info, "upvote": 0, "downvote": 0, "image": image_dict.get(item, None)})
         item_id += 1
     #adding default upvotes (10) happens for random pokemon
-    for i in range(10):
+    for i in range(100000):
         id = getRandomPokemon()['id']
         addUpVote(id)
     #adding default downvotes (5) for random pokemon
-    for i in range(5):
+    for i in range(50000):
         id = getRandomPokemon()['id']
         addDownVote(id)
 
